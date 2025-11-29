@@ -1,0 +1,5 @@
+{
+  "name": "Guardião Estelar AI",
+  "description": "Um jogo de nave estilo arcade onde você defende a galáxia contra ondas de inimigos. Inclui análise de combate pós-jogo impulsionada pela Gemini AI.",
+  "requestFramePermissions": []
+}
