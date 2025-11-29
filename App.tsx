@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import GameCanvas from './components/GameCanvas';
 import { GameState, GameMetrics } from './types';
 import { generateBattleReport } from './services/geminiService';
-import { GoogleGenAI } from '@google/genai';
 
 // Simple Icon Components
 const ShipIcon = () => (
@@ -82,7 +81,7 @@ const App: React.FC = () => {
                 <p className="text-xs text-slate-500 uppercase tracking-widest mb-2">Créditos</p>
                 <p className="text-sm text-slate-300">Desenvolvimento & Design</p>
                 <p className="text-lg text-white font-bold my-1">Alves</p>
-                <p className="text-xs text-blue-400 mt-1">Powered by Gemini AI</p>
+                <p className="text-xs text-blue-400 mt-1">Sistema Tático Offline</p>
               </div>
             </div>
           )}
