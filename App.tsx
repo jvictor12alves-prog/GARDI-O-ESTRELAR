@@ -61,13 +61,13 @@ const App: React.FC = () => {
               </h1>
               <div className="flex items-center justify-center gap-2 mb-8">
                 <span className="text-slate-400 text-sm tracking-wider">DEFESA ORBITAL</span>
-                <span className="bg-yellow-500/20 text-yellow-300 text-xs px-2 py-0.5 rounded border border-yellow-500/50 font-bold">v1.0</span>
+                <span className="bg-green-500/20 text-green-300 text-xs px-2 py-0.5 rounded border border-green-500/50 font-bold">v1.1</span>
               </div>
               
               <div className="space-y-4">
                 <p className="text-xs text-slate-500 mb-4">
-                  USE [←][→] PARA MOVER <br/>
-                  [ESPAÇO] PARA ATIRAR
+                  PC: [←][→] MOVER | [ESPAÇO] ATIRAR<br/>
+                  MOBILE: TOQUE NOS BOTÕES
                 </p>
                 <button 
                   onClick={startGame}
@@ -135,7 +135,7 @@ const App: React.FC = () => {
       <div className="absolute top-4 right-4 z-20 hidden md:block">
         <div className="text-right">
           <p className="text-xs text-slate-500">SISTEMA: ONLINE</p>
-          <p className="text-xs text-slate-500">VERSÃO: 1.0</p>
+          <p className="text-xs text-slate-500">VERSÃO: 1.1</p>
         </div>
       </div>
     </div>

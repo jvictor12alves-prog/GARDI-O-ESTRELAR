@@ -329,15 +329,6 @@ const GameCanvas: React.FC<GameCanvasProps> = ({ gameState, setGameState, onGame
       ctx.fill();
       ctx.globalAlpha = 1.0;
 
-      // Debug Hitbox (Uncomment to see the new hitbox)
-      // ctx.strokeStyle = 'lime';
-      // ctx.strokeRect(
-      //   playerRef.current.pos.x + 12, 
-      //   playerRef.current.pos.y + 10, 
-      //   playerRef.current.width - 24, 
-      //   playerRef.current.height - 15
-      // );
-
       // Draw Enemies
       enemiesRef.current.forEach(enemy => {
         ctx.fillStyle = enemy.color;
@@ -418,7 +409,7 @@ const GameCanvas: React.FC<GameCanvasProps> = ({ gameState, setGameState, onGame
   };
 
   return (
-    <div className="relative w-full h-full flex justify-center items-center bg-gray-900">
+    <div className="relative w-full h-full flex justify-center items-center bg-gray-900 touch-none">
       <canvas
         ref={canvasRef}
         width={CANVAS_WIDTH}
@@ -426,34 +417,41 @@ const GameCanvas: React.FC<GameCanvasProps> = ({ gameState, setGameState, onGame
         className="w-full h-full max-w-[800px] max-h-[600px] object-contain shadow-2xl border border-slate-700 bg-slate-900"
       />
       
-      {/* Mobile Controls Overlay - Visible only on small screens conceptually, but useful for mouse users too if they want buttons */}
-      <div className="absolute bottom-4 left-0 right-0 flex justify-between px-8 md:hidden pointer-events-none">
+      {/* Mobile Controls Overlay - Improved for ergonomics */}
+      <div className="absolute bottom-6 left-0 right-0 flex justify-between px-6 md:hidden pointer-events-none select-none">
+        
+        {/* Left Side: Movement D-Pad */}
         <div className="flex gap-4 pointer-events-auto">
           <button 
-            className="w-16 h-16 bg-blue-600/50 rounded-full border-2 border-blue-400 active:bg-blue-600 flex items-center justify-center text-white font-bold select-none"
+            className="w-20 h-20 bg-blue-600/30 rounded-full border-2 border-blue-400/50 active:bg-blue-600/80 active:border-blue-400 active:scale-95 transition-all flex items-center justify-center text-white text-3xl font-bold backdrop-blur-sm"
             onTouchStart={(e) => { e.preventDefault(); handleTouchStart('left'); }}
             onTouchEnd={(e) => { e.preventDefault(); handleTouchEnd('left'); }}
             onMouseDown={() => handleTouchStart('left')}
             onMouseUp={() => handleTouchEnd('left')}
+            aria-label="Mover Esquerda"
           >
             ←
           </button>
           <button 
-            className="w-16 h-16 bg-blue-600/50 rounded-full border-2 border-blue-400 active:bg-blue-600 flex items-center justify-center text-white font-bold select-none"
+            className="w-20 h-20 bg-blue-600/30 rounded-full border-2 border-blue-400/50 active:bg-blue-600/80 active:border-blue-400 active:scale-95 transition-all flex items-center justify-center text-white text-3xl font-bold backdrop-blur-sm"
             onTouchStart={(e) => { e.preventDefault(); handleTouchStart('right'); }}
             onTouchEnd={(e) => { e.preventDefault(); handleTouchEnd('right'); }}
             onMouseDown={() => handleTouchStart('right')}
             onMouseUp={() => handleTouchEnd('right')}
+            aria-label="Mover Direita"
           >
             →
           </button>
         </div>
+
+        {/* Right Side: Action Button */}
         <button 
-            className="w-20 h-20 bg-red-600/50 rounded-full border-2 border-red-400 active:bg-red-600 flex items-center justify-center text-white font-bold select-none pointer-events-auto"
+            className="w-24 h-24 bg-red-600/30 rounded-full border-4 border-red-400/50 active:bg-red-600/80 active:border-red-400 active:scale-95 transition-all flex items-center justify-center text-white font-bold tracking-widest pointer-events-auto backdrop-blur-sm"
             onTouchStart={(e) => { e.preventDefault(); handleTouchStart('shoot'); }}
             onTouchEnd={(e) => { e.preventDefault(); handleTouchEnd('shoot'); }}
             onMouseDown={() => handleTouchStart('shoot')}
             onMouseUp={() => handleTouchEnd('shoot')}
+            aria-label="Atirar"
         >
           TIRO
         </button>
